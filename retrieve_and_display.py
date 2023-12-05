@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import sqlite3
 
-conn = sqlite3.connect('camp_articles.db')
+conn = sqlite3.connect('https://www.takibi-reservation.style/chugoku-shikoku')
 cursor = conn.cursor()
 
 # articlesテーブルを作成（存在しない場合のみ）
@@ -28,7 +28,7 @@ article_elements = soup.find_all("a", href=True)
 for article in article_elements:
     title = article.text.strip()
     link = article["href"]
-    if title and link.startswith("https://camp-quests.com/"):
+    if title and link.startswith("https://www.takibi-reservation.style/kyushu-okinawa"):
         articles.append((title, link))
 
 # データベースに保存
